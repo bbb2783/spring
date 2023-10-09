@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>회원정보</title></head>
+<body>
+<h3><span style="color:blue" th:text="${m.id}">
+id</span>님의 정보</h3> 
+<form method="get" action="/myinfo/update"><p>
+<fieldset style="background-color:#FBF8EF"> 
+<legend><strong>회원 정보 조회 및 변경</strong></legend><br>
+<table width="300">
+<tr><td>password <td><input type="text" name="pw" th:value="${m.pw}">
+<tr><td>이름 <td><input type="text" name="name" th:value="${m.email}"> 
+
+<tr><td>현재 잔액 <td><input type="text" th:value="${won}" disabled>
+<tr><td>회원가입일시<td><input type="text" th:value="${m.rdate}" disabled>
+</table><p>
+</fieldset><p> 
+<a href="/menu">메뉴로 돌아가기</a> &nbsp; 
+<input type="submit" value="변경된 내용으로 수정">
+</form></body>
+
+</html>

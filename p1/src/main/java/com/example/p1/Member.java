@@ -9,8 +9,8 @@ import org.hibernate.annotations.CreationTimestamp;
 public class Member {
 @Id public String id;
 public String pw;
-public String name;
-public String phone;
+public String pw2;
+public String email;
 public Integer balance; 
 @CreationTimestamp public LocalDateTime rdate;
 }
