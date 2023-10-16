@@ -1,4 +1,5 @@
 const signup = document.getElementById("sign-up");
+
 signin = document.getElementById("sign-in");
 loginin = document.getElementById("login-in");
 loginup = document.getElementById("login-up");
@@ -17,6 +18,4 @@ signin.addEventListener("click", () => {
 
     loginin.classList.add("block");
     loginup.classList.add("none");
-})/**
- * 
- */
+})

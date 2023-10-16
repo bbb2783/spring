@@ -15,45 +15,52 @@
       </div>
       <div class="login__forms">
 <!--         login form -->
-        <form action="/login/check" class="login__register" id="login-in">
+        <form method="get" action="/login/check" class="login__register" id="login-in">
           <h1 class="login__title">로그인</h1>
           <div class="login__box">
             <i class='bx bx-user login__icon'></i>
-            <input type="text" placeholder="Username" class="login__input">
+            <input type="text" placeholder="Username" class="login__input" name="id">
           </div>
           <div class="login__box">
             <i class='bx bx-lock login__icon'></i>
-            <input type="text" placeholder="Password" class="login__input">
+            <input type="text" placeholder="Password" class="login__input" name="pw">
           </div>
           <a href="#" class="login__forgot">비밀번호 찾기 </a>
           
-          <a href="#" class="login__button">회원가입</a>
+          <input type="submit" value="로그인" class="login__button">로그인</a>
           
           <div>
-            <span class="login__account login__account--account">계정이 없으신가요?</span>
-            <span class="login__signin login__signin--signup" id="sign-up">회원가입</span>
+            <span class="login__account login__account--account">계정이 없으신가요?</span><br>
+            <span class="login__signin login__signin--signup" id="sign-up">일반 회원가입</span><br>
+            <a href="/signup2">사업자 회원가입</a>
           </div>
         </form>
         
 <!--         create account form -->
-        <form action="member/insert" class="login__create none" id="login-up">
+        <form method="get" action="/member/insert" class="login__create none" id="login-up">
           <h1 class="login__title">계정 만들기</h1>
           <div class="login__box">
             <i class='bx bx-user login__icon'></i>
-            <input type="text" placeholder="Username" class="login__input">
-          </div>
-          
-          <div class="login__box">
-            <i class='bx bx-at login__icon'></i>
-            <input type="text" placeholder="Email" class="login__input">
+            <input type="text" placeholder="아이디" class="login__input" name="id" required>
           </div>
           
           <div class="login__box">
             <i class='bx bx-lock login__icon'></i>
-            <input type="text" placeholder="Password" class="login__input">
+            <input type="text" placeholder="비밀번호" class="login__input" name="pw" required>
           </div>
           
-          <a href="#" class="login__button">회원가입</a>
+          <div class="login__box">
+            <i class='bx bx-lock login__icon'></i>
+            <input type="text" placeholder="비밀번호 확인" class="login__input" name="pw2" required>
+          </div>
+          
+          <div class="login__box">
+            <i class='bx bx-at login__icon'></i>
+            <input type="text" placeholder="이메일" class="login__input" name="email">
+          </div>
+          
+          
+          <input type="submit" class="login__button" value="회원가입">회원가입
           
           <div>
             <span class="login__account login__account--account">이미 계정이 있으신가요?</span>

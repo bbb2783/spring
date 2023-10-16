@@ -13,4 +13,12 @@ public String pw2;
 public String email;
 public Integer balance; 
 @CreationTimestamp public LocalDateTime rdate;
+
+public String getId() {
+    return id;
+}
+
+public String getPw() {
+    return pw;
+}
 }
