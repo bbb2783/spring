@@ -32,6 +32,14 @@ mo.addAttribute("list",list);
 return "memberList";
 }
 
+@GetMapping("new/member/list")
+public String newmemberList(Model mo) {
+List<Member> list = memRep.findAll(); 
+mo.addAttribute("list",list);
+return "newmemberList";
+}
+
+
 @GetMapping("/main")
 public String main() {
 	return "main";
@@ -62,6 +70,37 @@ public String memberInsert(String id, String pw, String pw2, String email, Model
             m.pw = pw;
             m.pw2 = pw2;
             m.email = email;
+            m.compare = "person";
+            m.balance = 0;
+            memRep.save(m);
+            mo.addAttribute("msg", id + "님, 반갑습니다");
+            mo.addAttribute("url", "/test1");
+        }
+    }
+    return "popus";
+}
+
+@GetMapping("new/member/insert")
+public String newmemberInsert(String id, String pw, String pw2, String email, String num1, String address, String compare, Integer compare2, Model mo) {
+    if (memRep.existsById(id)) {
+        mo.addAttribute("msg", id + "는 이미 사용되고 있는 아이디 입니다.");
+        mo.addAttribute("url", "back");
+    } else {
+        if (!pw.equals(pw2)) {
+            mo.addAttribute("msg", "비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+            mo.addAttribute("url", "back");
+        } else if (memRep.existsByNum1(num1)) { // 추가: num1 중복 확인
+            mo.addAttribute("msg", num1 + "는 이미 사용되고 있는 사업자 번호 입니다.");
+            mo.addAttribute("url", "back");
+        } else {
+            Member m = new Member();
+            m.id = id;
+            m.pw = pw;
+            m.pw2 = pw2;
+            m.email = email;
+            m.num1 = num1;
+            m.address = address;
+            m.compare2 = 1;
             m.balance = 0;
             memRep.save(m);
             mo.addAttribute("msg", id + "님, 반갑습니다");
@@ -73,6 +112,13 @@ public String memberInsert(String id, String pw, String pw2, String email, Model
 
 @GetMapping("/login/check")
 public String loginCheck(HttpSession session, String id, String pw, Model mo) {
+    if (id == null || id.trim().isEmpty() || pw == null || pw.trim().isEmpty()) {
+        // 아이디 또는 비밀번호가 빈 칸인 경우
+        mo.addAttribute("msg", "아이디와 비밀번호를 모두 입력해주세요.");
+        mo.addAttribute("url", "back");
+        return "popus";
+    }
+
     // 아이디로 회원 정보를 데이터베이스에서 조회합니다.
     Optional<Member> optionalMember = memRep.findById(id);
 
@@ -90,23 +136,27 @@ public String loginCheck(HttpSession session, String id, String pw, Model mo) {
         }
         else
         {
-        	 mo.addAttribute("msg", "아이디 또는 비밀번호가 올바르지 않습니다.");
-        	 mo.addAttribute("url", "back");
-        	 return "popus";
+            mo.addAttribute("msg", "비밀번호가 올바르지 않습니다.");
+            mo.addAttribute("url", "back");
+            return "popus";
         }
     }
-
-    // 로그인 실패 시 처리
-    mo.addAttribute("msg", "아이디 또는 비밀번호가 올바르지 않습니다.");
-    mo.addAttribute("url", "/login");
-    return "popups";
+    else
+    {
+        // 아이디가 존재하지 않는 경우 처리
+        mo.addAttribute("msg", "아이디가 올바르지 않습니다.");
+        mo.addAttribute("url", "back");
+        return "popus";
+    }
 }
+
 
 
 
 @GetMapping("/menu")
 public String menu(HttpSession session, Model mo) {
 mo.addAttribute("id", session.getAttribute("id"));
+mo.addAttribute("compare", session.getAttribute("compare"));
 return "menu";
 }
 

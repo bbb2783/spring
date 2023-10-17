@@ -8,12 +8,18 @@
 <script th:inline="javascript">
 let msg = [[${msg}]];
 let url = [[${url}]];
+
+if (!msg) {
+    msg = "모든 필드를 입력해주세요."; // 빈칸으로 입력한 경우 메시지 설정
+}
+
 alert(msg);
-if(url == 'back')
-history.back();
-else
-location.href=url;
+
+if (url == 'back') {
+    history.back();
+} else {
+    location.href = url;
+}
 </script>
 </body>
-
 </html>

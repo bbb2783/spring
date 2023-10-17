@@ -5,15 +5,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="get" action="/member/insert">
+<form method="get" action="/new/member/insert">
 <link href="css/signup2.css" rel="stylesheet">
 <div class="box">
-  <input type="text" placeholder="id" name="id"/>
-  <input type="password" placeholder="Password" />
+  <input type="text" placeholder="아이디" name="id"/>
+  <input type="password" placeholder="비밀번호"  name="pw"/>
+  <input type="password" placeholder="비밀번호 확인"  name="pw2"/>
+  <input type="email" placeholder="이메일"  name="email"/>
   <input type="text" placeholder="사업자 번호" name="num1">
-  
+  <input type="text" placeholder="피시방 주소" name="address">
   <input type ="submit" value="사업자 회원가입">
-
+  <a href="javascript:history.back()">뒤로가기</a>
   </div>
   </form>
 </body>

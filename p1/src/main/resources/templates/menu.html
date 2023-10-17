@@ -14,9 +14,10 @@ id</span>님, 어떤 업무를 하시겠습니까?
 <li><a href = "/myinfo">회원정보조회 및 변경</a> 
 <li><a href = "/qa/question"> 게시판(Q&A)</a> 
 <li><a href = "/logout">logout</a> 
-<li th:if="${id}=='admin'"><a href="/member/list">전체 회원 리스트 (admin only)</a> 
+<li th:if="${id}=='admin'"><a href="new/member/list">전체 회원 리스트 (admin only)</a> 
 <li th:if="${id}=='admin'"><a href="/bank/list">전체 거래 내역 (admin only)</a> 
 <li th:if="${id}=='admin'"><a href="/qa/answer">게시판 답변 등록 (admin only)</a> 
+<li th:if="${compare2}==1"><a href="/new/menu">매장관리</a>
 </ul>
 </body>
 </html>
