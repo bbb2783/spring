@@ -100,7 +100,7 @@ public String newmemberInsert(String id, String pw, String pw2, String email, St
             m.email = email;
             m.num1 = num1;
             m.address = address;
-            m.compare = "bussiness";
+            m.compare = "bussiness1";
             m.compare2 = 1;
             m.balance = 0;
             memRep.save(m);
