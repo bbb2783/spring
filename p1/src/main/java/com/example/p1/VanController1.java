@@ -55,6 +55,11 @@ public String memberRegister() {
 return "memberRegister";
 }
 
+@GetMapping("/businessNumberform")
+public String businessnumberform() {
+	return "businessnumberform";
+}
+
 @GetMapping("/member/insert")
 public String memberInsert(String id, String pw, String pw2, String email, Model mo) {
     if (memRep.existsById(id)) {
@@ -158,6 +163,7 @@ public String loginCheck(HttpSession session, String id, String pw, Model mo) {
 public String menu(HttpSession session, Model mo) {
 mo.addAttribute("id", session.getAttribute("id"));
 mo.addAttribute("compare", session.getAttribute("compare"));
+mo.addAttribute("compare2", session.getAttribute("compare2"));
 return "menu";
 }
 
@@ -171,5 +177,9 @@ mo.addAttribute("won", df.format(m.balance)+" 원");
 return "myinfo";
 }
 
+@GetMapping("/new/menu")
+public String newmemu() {
+	return "newmenu";
+}
 
 }

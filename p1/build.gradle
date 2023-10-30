@@ -22,6 +22,14 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.13.0' // 최신 버전 사용
+	implementation 'mysql:mysql-connector-java:8.0.26' // 사용 가능한 최신 버전으로 업데이트
+	implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+	
+	
+	
+	
 }
 
 tasks.named('test') {
