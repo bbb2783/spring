@@ -182,4 +182,25 @@ public String newmemu() {
 	return "newmenu";
 }
 
+@GetMapping("/myinfo/update")
+public String myinfoUpdate(HttpSession session, String pw, String email, Model mo) {
+	String id = (String)session.getAttribute("id");
+	if(memRep.updateMyinfo(id, pw, email) == 0)
+	{
+		mo.addAttribute("msg", "정보 변경 실패 고객센터로 문의하세요");
+	}
+	else
+	{
+		mo.addAttribute("msg", id+"님의 정보가 변경되었습니다.");
+	}
+	mo.addAttribute("url", "back");
+	return "popus";
+}
+
+@GetMapping("/logout")
+public String logout(HttpSession session, Model mo) {
+	mo.addAttribute("id", session.getAttribute("id"));
+	session.invalidate();
+	return "logout";
+}
 }
